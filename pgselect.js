@@ -106,7 +106,7 @@ function populateTable(){
 	for (index = 0; index < skulist.length; index++) {
 	  if (skulist[index].substring(0, skulist[index].indexOf(" ")) != currentSKU) {
 		allProducts += "<tr>"
-            +"<td id='" +skulist[index].substring(0, skulist[index].indexOf(" ")) + "'><img src='default.png'></td>" + "<td>" + skulist[index] + "</td>"
+            +"<td id='" +skulist[index].substring(0, skulist[index].indexOf(" ")) + "'><img src='default.png'></td>" + "<td>" + skulist[index].substring(skulist[index].indexOf(" "), skulist[index].length) + "</td>"
             +"<td><input type='checkbox' class='id_D' id='D"+index+"'><label for='D"+index+"'></label></td>"
 			+"<td><input type='checkbox' class='id_P' id='P"+index+"'><label for='P"+index+"' ></label></td>"
 			+"<td><input type='checkbox' class='id_S' id='S"+index+"'><label for='S"+index+"' ></label></td>"
@@ -114,7 +114,7 @@ function populateTable(){
       }
         else {
 		allProducts += "<tr>"
-            +"<td>" + skulist[index] + "</td>"
+            +"<td>" + skulist[index].substring(skulist[index].indexOf(" "), skulist[index].length) + "</td>"
             +"<td><input type='checkbox' class='id_D' id='D"+index+"'><label for='D"+index+"'></label></td>"
             +"<td><input type='checkbox' class='id_P' id='P"+index+"'><label for='P"+index+"'></label></td>"
 			+"<td><input type='checkbox' class='id_S' id='S"+index+"'><label for='S"+index+"'></label></td>"
@@ -129,10 +129,8 @@ function populateTable(){
 	editTable(brandspan);
 	
 }
-
+//edit table attribute
 function editTable(brandspan){
-	//edit table attribute
-	var valueof = [];
     var y = [];
 	var x = document.getElementsByTagName("tr");
 	for (i=0;i<x.length; i++){
