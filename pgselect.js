@@ -167,9 +167,9 @@ function editTable(brandspan){
 			document.getElementById("ALWAYS").rowSpan = brandspan["ALWAYS"];
 			document.getElementById("ALWAYS").innerHTML="<img  src='always.png'/>";
 		}
-		if ( checkindex( y[i], 'ORAL') === true) {
-			document.getElementById("ORAL").rowSpan = brandspan["ORAL"];
-			document.getElementById("ORAL").innerHTML="<img  src='oralb.png'/>";
+		if ( checkindex( y[i], 'ORALB') === true) {
+			document.getElementById("ORALB").rowSpan = brandspan["ORALB"];
+			document.getElementById("ORALB").innerHTML="<img  src='oralb.png'/>";
 			x[i].style.backgroundColor = "#002060";
         }
 		if ( checkindex( y[i], 'GILLETTE') === true) {
@@ -635,210 +635,315 @@ $(document).ready(function(){
 });
 
 //offline script json files
-
-var defaultListOfProducts = {
-	skuID1:'PAMPERS PPC VALUE PACK MINI',
-	skuID2:'Pampers PPC VALUE PACKS MIDI',
-	skuID3:'PAMPERS PPC VALUE PACKS MAXI',
-	skuID4:'PAMPERS MEGA BOX/VP MIDI',
-	skuID5:'PAMPERS MEGA BOXES/VP MAXI',
-	skuID6:'PAMPERS BABY DRY MINI CP',
-	skuID7:'PAMPERS BABY DRY MIDI CP',
-	skuID8:'PAMPERS BABY DRY MAXI CP',
-	skuID9:'PAMPERS BABY DRY MINI VP',
-	skuID10:'PAMPERS BABY DRY MIDI VP',
-	skuID11:'PAMPERS BABY DRY MAXI VP',
-	skuID12:'PAMPERS JUMBO PACK MINI',
-	skuID13:'PAMPERS JUMBO PACK MIDI',
-	skuID14:'PAMPERS JUMBO PACK MAXI',
-	skuID15: 'ARIEL 1KG',
-	skuID16:'ARIEL 500g',
-	skuID17:'Ariel 190g',
-	skuID18:'ALWAYS ULTRA DUOS',
-	skuID19:'ALWAYS ULTRA SLIM',
-	skuID20:'ALWAYS ULTRA LONG',
-	skuID21:'ALWAYS ULTRA SHORT',
-	skuID22:'VICKS BLUE',
-	skuID23:'VICKS LEMON',
-	skuID24:'FAIRY 500ML ORIGINAL',
-	skuID25:'FAIRY 500ML LEMON',
-	skuID26:'ORAL B FRESH GEL 140G',
-	skuID27:'ORAL B CLASSIC',
-	skuID28:'ORAL B 123 BRUSH',
-	skuID29:'ORAL B  ARP 158g',
-	skuID30:'SAFEGUARD 70G PURE WHITE',
-	skuID31:'SAFEGUARD 175G PURE WHITE'
+var defaultListOfProducts = { 
+	skuID1:'ALWAYS ULTRA NORMAL',
+	skuID2:'ALWAYS ULTRA SUPER',
+	skuID3:'ALWAYS DUO NORMAL',
+	skuID4:'ALWAYS DUO SUPER',
+	skuID5:'ALWAYS PLATINUM NORMAL',
+	skuID6:'ALWAYS PLATINUM SUPER',
+	skuID7:'ALWAYS PLATINUM DUO NORMAL',
+	skuID8:'ALWAYS PLATINUM DUO NORMAL',
+	skuID9:'ALWAYS CLASSIC NORMAL',
+	skuID10:'ALWAYS CLASSIC SUPER',
+	skuID101:'ARIEL 30g HS',
+	skuID102:'ARIEL 90g HS',
+	skuID103:'ARIEL 250g HS',
+	skuID104:'ARIEL 500g HS',
+	skuID105:'ARIEL 1kg HS',
+	skuID106:'ARIEL 2kg HS',
+	skuID107:'ARIEL 1kg LS',
+	skuID108:'ARIEL 2kg LS',
+	skuID201:'FAIRY 500ML ORIGINAL',
+	skuID202:'FAIRY 500ML LEMON',
+	skuID301:'GILLETTE Nacet',
+	skuID302:'GILLETTE Silver Blue',
+	skuID303:'GILLETTE PROGLIDE POWER RAZOR',
+	skuID304:'GILLETTE PROGLIDE MANUAL RAZOR',
+	skuID305:'GILLETTE PROGLIDE POWER BLADE',
+	skuID306:'GILLETTE PROGLIDE MANUAL BLADE',
+	skuID307:'GILLETTE MACH 3 RAZOR',
+	skuID308:'GILLETTE MACH 3T RAZOR',
+	skuID309:'GILLETTE MACH 3  CART (2S)',
+	skuID310:'GILLETTE MACH 3T CART (4S)',
+	skuID311:'GILLETTE MACH 3 CART (4S)',
+	skuID312:'GILLETTE II POUCH',
+	skuID313:'GILLETTE BLUE II PLUS POUCH',
+	skuID314:'GILLETTE BLUE III POUCH',
+	skuID315:'GILLETTE BLUE III PLUS POUCH',
+	skuID316:'GILLETTE II HRDC',
+	skuID401:'PAMPERS PPC VP MINI',
+	skuID402:'PAMPERS PPC VP MIDI',
+	skuID403:'PAMPERS PPC VP MAXI',
+	skuID404:'PAMPERS PPC CP MINI',
+	skuID405:'PAMPERS PPC CP MIDI',
+	skuID406:'PAMPERS PPC CP MAXI',
+	skuID407:'PAMPERS MEGA BOX/VP MIDI',
+	skuID408:'PAMPERS MEGA BOXES/VP MAXI',
+	skuID409:'PAMPERS BABY DRY MINI CP',
+	skuID410:'PAMPERS BABY DRY MIDI CP',
+	skuID411:'PAMPERS BABY DRY MAXI CP',
+	skuID412:'PAMPERS BABY DRY MINI VP',
+	skuID413:'PAMPERS BABY DRY MIDI VP',
+	skuID414:'PAMPERS BABY DRY MAXI VP',
+	skuID415:'PAMPERS JUMBO PACK MINI',
+	skuID416:'PAMPERS JUMBO PACK MIDI',
+	skuID417:'PAMPERS JUMBO PACK MAXI',
+	skuID418:'PAMPERS WIPES',
+	skuID501:'ORALB Plus HTDC',
+	skuID502:'ORALB 123 CASSETTE',
+	skuID503:'ORALB Herbal Mint 50ML',
+	skuID504:'ORALB NATURAL FRESH',
+	skuID505:'ORALB FRESH GEL 40g',
+	skuID506:'ORALB ARP 95g',
+	skuID507:'ORALB ARP 158g',
+	skuID508:'ORALB MINT GEL 140g',
+	skuID509:'ORALB Herbal Mint 140g',
+	skuID510:'ORALB FRESH GEL 140g',
+	skuID511:'ORALB Prem Gum Protect',
+	skuID512:'ORALB ARP White 96g',
+	skuID513:'ORALB 123 BRUSH',
+	skuID514:'ORALB CLASSIC BRUSH',
+	skuID515:'ORALB Pro-EXPERT BRUSH',
+	skuID516:'ORALB Proflex BRUSH',
+	skuID601:'SAFEGUARD 70G PURE WHITE',
+	skuID602:'SAFEGUARD 70G LEMON FRESH',
+	skuID603:'SAFEGUARD 70G MENTHOL COOL',
+	skuID604:'SAFEGUARD 70G SOFT CARE WITH ALOE',
+	skuID605:'SAFEGUARD 175G PURE WHITE',
+	skuID606:'SAFEGUARD 175G LEMON FRESH',
+	skuID607:'SAFEGUARD 175G MENTHOL COOL',
+	skuID608:'SAFEGUARD 175G SOFT CARE WITH ALOE',
+	skuID701:'VICKS Lemon',
+	skuID702:'VICKS Blue',
+	skuID703:'VICKS Apple',
+	skuID704:'VICKS Mixed Cases',
+	skuID705:'VICKS NV lemon',
+	skuID706:'VICKS NV Blue',
 };
 
 var defaultData = {
     SouthWest: {
-        HFS: {
-            LT: {
+        
+		HSM: {
+			LT: {
                 fullname: 'Large Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID7', 'skuID8', 'skuID9', 'skuID10', 'skuID104', 'skuID105', 'skuID106', 'skuID107', 'skuID108', 'skuID201', 'skuID202', 'skuID303', 'skuID304', 'skuID305', 'skuID306', 'skuID307', 'skuID308', 'skuID310', 'skuID312', 'skuID313', 'skuID314', 'skuID401', 'skuID402', 'skuID403', 'skuID404', 'skuID405', 'skuID406', 'skuID407', 'skuID408', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID508', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID601', 'skuID602', 'skuID603', 'skuID604', 'skuID605', 'skuID606', 'skuID607', 'skuID608', 'skuID701', 'skuID702']
             },
-            MT: {
+			MT: {
                 fullname: 'Medium Traditional',
-                productIDs: ['skuID4', 'skuID5', 'skuID6']
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID513', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
             },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID7', 'skuID8', 'skuID9']
-            },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID10', 'skuID11', 'skuID12']
-            },
-            CS: {
-                fullname: 'Chain Supermarket',
-                productIDs: ['skuID13', 'skuID14', 'skuID1']
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
             }
-        },
-        HSM: {
-            MT: {
-                fullname: 'Medium Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            KIOSK: {
-                fullname: 'Kiosk',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            }
-        }
-    },
-    SouthEast: {
-        HFS: {
-            LT: {
-                fullname: 'Large Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID5']
-            },
-            MT: {
-                fullname: 'Medium Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            CS: {
-                fullname: 'Chain Supermerket',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            }
-        },
-        HSM: {
-            MT: {
-                fullname: 'Medium Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            KIOSK: {
-                fullname: 'Kiosk',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            }
-        }
-    },
-    North: {
+		},
 		
-        HFS: {
-            LT: {
-                fullname: 'Large Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID10','skuID13','skuID16','skuID24','skuID28','skuID29','skuID30','skuID31']
-            },
-            MT: {
-                fullname: 'Medium Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            CS: {
-                fullname: 'Chain Supermerket',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            }
-        },
-        HSM: {
-            MT: {
-                fullname: 'Medium Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            KIOSK: {
-                fullname: 'Kiosk',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            }
-        }
-    },
-	
-	Lagos: {
 		HFS: {
-            LT: {
-                fullname: 'Large Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            MT: {
+			MT: {
                 fullname: 'Medium Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
+                productIDs: ['skuID1',	'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
             },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
+			ST: {
+                fullname: 'Small Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID105', 'skuID201', 'skuID202', 'skuID313', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
             },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            CS: {
-                fullname: 'Chain Supermerket',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            }
-        },
-        HSM: {
-            MT: {
-                fullname: 'Medium Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            SB: {
-                fullname: 'Small Baby',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            LB: {
-                fullname: 'Large Baby Traditional',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
-            },
-            KIOSK: {
+			KS: {
                 fullname: 'Kiosk',
-                productIDs: ['skuID1', 'skuID2', 'skuID3']
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID508', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			IB: {
+                fullname: 'Independent Baby',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID508', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606']
+            },
+			SB: {
+                fullname: 'Small Baby',
+                productIDs: ['skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			LB: {
+                fullname: 'Large Baby',
+                productIDs: ['skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			IP: {
+                fullname: 'Independent Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID312', 'skuID313', 'skuID409', 'skuID410', 'skuID411', 'skuID505', 'skuID510', 'skuID514', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			WSR: {
+                fullname: 'Wholesale/Retail',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID502', 'skuID505', 'skuID506', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
             }
-        }
+		}
+	},
+	SouthEast: {
+        
+		HSM: {
+			LT: {
+                fullname: 'Large Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID7', 'skuID8', 'skuID9', 'skuID10', 'skuID104', 'skuID105', 'skuID106', 'skuID107', 'skuID108', 'skuID201', 'skuID202', 'skuID303', 'skuID304', 'skuID305', 'skuID306', 'skuID307', 'skuID308', 'skuID310', 'skuID312', 'skuID313', 'skuID314', 'skuID401', 'skuID402', 'skuID403', 'skuID404', 'skuID405', 'skuID406', 'skuID407', 'skuID408', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID508', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID601', 'skuID602', 'skuID603', 'skuID604', 'skuID605', 'skuID606', 'skuID607', 'skuID608', 'skuID701', 'skuID702']
+            },
+			MT: {
+                fullname: 'Medium Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID513', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            }
+		},
+		
+		HFS: {
+			MT: {
+                fullname: 'Medium Traditional',
+                productIDs: ['skuID1',	'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			ST: {
+                fullname: 'Small Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID105', 'skuID201', 'skuID202', 'skuID313', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			KS: {
+                fullname: 'Kiosk',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID508', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			IB: {
+                fullname: 'Independent Baby',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID508', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606']
+            },
+			SB: {
+                fullname: 'Small Baby',
+                productIDs: ['skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			LB: {
+                fullname: 'Large Baby',
+                productIDs: ['skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			IP: {
+                fullname: 'Independent Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID312', 'skuID313', 'skuID409', 'skuID410', 'skuID411', 'skuID505', 'skuID510', 'skuID514', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			WSR: {
+                fullname: 'Wholesale/Retail',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID502', 'skuID505', 'skuID506', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            }
+		}
+	},
+	North: {
+        
+		HSM: {
+			LT: {
+                fullname: 'Large Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID7', 'skuID8', 'skuID9', 'skuID10', 'skuID104', 'skuID105', 'skuID106', 'skuID107', 'skuID108', 'skuID201', 'skuID202', 'skuID303', 'skuID304', 'skuID305', 'skuID306', 'skuID307', 'skuID308', 'skuID310', 'skuID312', 'skuID313', 'skuID314', 'skuID401', 'skuID402', 'skuID403', 'skuID404', 'skuID405', 'skuID406', 'skuID407', 'skuID408', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID508', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID601', 'skuID602', 'skuID603', 'skuID604', 'skuID605', 'skuID606', 'skuID607', 'skuID608', 'skuID701', 'skuID702']
+            },
+			MT: {
+                fullname: 'Medium Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID513', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            }
+		},
+		
+		HFS: {
+			MT: {
+                fullname: 'Medium Traditional',
+                productIDs: ['skuID1',	'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			ST: {
+                fullname: 'Small Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID105', 'skuID201', 'skuID202', 'skuID313', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			KS: {
+                fullname: 'Kiosk',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID508', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			IB: {
+                fullname: 'Independent Baby',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID508', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606']
+            },
+			SB: {
+                fullname: 'Small Baby',
+                productIDs: ['skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			LB: {
+                fullname: 'Large Baby',
+                productIDs: ['skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			IP: {
+                fullname: 'Independent Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID312', 'skuID313', 'skuID409', 'skuID410', 'skuID411', 'skuID505', 'skuID510', 'skuID514', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			WSR: {
+                fullname: 'Wholesale/Retail',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID502', 'skuID505', 'skuID506', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            }
+		}
+	},
+	Lagos: {  
+		HSM: {
+			LT: {
+                fullname: 'Large Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID7', 'skuID8', 'skuID9', 'skuID10', 'skuID104', 'skuID105', 'skuID106', 'skuID107', 'skuID108', 'skuID201', 'skuID202', 'skuID303', 'skuID304', 'skuID305', 'skuID306', 'skuID307', 'skuID308', 'skuID310', 'skuID312', 'skuID313', 'skuID314', 'skuID401', 'skuID402', 'skuID403', 'skuID404', 'skuID405', 'skuID406', 'skuID407', 'skuID408', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID508', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID601', 'skuID602', 'skuID603', 'skuID604', 'skuID605', 'skuID606', 'skuID607', 'skuID608', 'skuID701', 'skuID702']
+            },
+			MT: {
+                fullname: 'Medium Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID513', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            }
+		},
+		
+		HFS: {
+			MT: {
+                fullname: 'Medium Traditional',
+                productIDs: ['skuID1',	'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			ST: {
+                fullname: 'Small Traditional',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID105', 'skuID201', 'skuID202', 'skuID313', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			KS: {
+                fullname: 'Kiosk',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID316', 'skuID409', 'skuID410', 'skuID411', 'skuID502', 'skuID505', 'skuID508', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			IB: {
+                fullname: 'Independent Baby',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID508', 'skuID514', 'skuID601', 'skuID602', 'skuID605', 'skuID606']
+            },
+			SB: {
+                fullname: 'Small Baby',
+                productIDs: ['skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			LB: {
+                fullname: 'Large Baby',
+                productIDs: ['skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418']
+            },
+			CP: {
+                fullname: 'Chain Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID5', 'skuID6', 'skuID9', 'skuID10', 'skuID303', 'skuID305', 'skuID307', 'skuID308', 'skuID310', 'skuID311', 'skuID312', 'skuID313', 'skuID315', 'skuID401', 'skuID402', 'skuID403', 'skuID407', 'skuID408', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID506', 'skuID507', 'skuID510', 'skuID511', 'skuID514', 'skuID515', 'skuID516', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            },
+			IP: {
+                fullname: 'Independent Pharmacy',
+                productIDs: ['skuID1', 'skuID2', 'skuID9', 'skuID10', 'skuID312', 'skuID313', 'skuID409', 'skuID410', 'skuID411', 'skuID505', 'skuID510', 'skuID514', 'skuID601', 'skuID602', 'skuID701', 'skuID702']
+            },
+			WSR: {
+                fullname: 'Wholesale/Retail',
+                productIDs: ['skuID1', 'skuID2', 'skuID3', 'skuID4', 'skuID9', 'skuID10', 'skuID101', 'skuID102', 'skuID104', 'skuID105', 'skuID201', 'skuID202', 'skuID312', 'skuID313', 'skuID401', 'skuID402', 'skuID403', 'skuID409', 'skuID410', 'skuID411', 'skuID412', 'skuID413', 'skuID414', 'skuID415', 'skuID416', 'skuID417', 'skuID418', 'skuID502', 'skuID505', 'skuID506', 'skuID510', 'skuID601', 'skuID602', 'skuID605', 'skuID606', 'skuID701', 'skuID702']
+            }
+		}
 	}
 };
